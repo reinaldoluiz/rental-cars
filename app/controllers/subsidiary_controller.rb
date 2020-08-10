@@ -1,5 +1,0 @@
-class Subsidiary < ApplicationController
-    
-
-
-end

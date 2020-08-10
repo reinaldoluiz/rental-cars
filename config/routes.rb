@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
     root to: 'home#index'
 
-    resources :car_categories, :subsidiary
+    resources :car_categories, :subsidiaries
 end
