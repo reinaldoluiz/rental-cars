@@ -1,3 +1,9 @@
+<% if @car_category.errors.any?%>
+  <% @car_category.errors.full_messages.each do |message|%>
+    <p><%= message%></p>
+  <% end %>
+<% end %>
+
 <%= form_with model: @car_category, local: true do |f|%>
 
     <%= f.label :name, 'Nome'%>
