@@ -25,6 +25,12 @@ class CarCategoriesController < ApplicationController
         end
     end
 
+    def destroy
+        @car_category = CarCategory.find(params[:id])
+        @car_category.destroy
+        redirect_to car_categories_path
+    end
+
     def create
         @car_category = CarCategory.new(car_category_params)
         if @car_category.save
