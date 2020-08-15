@@ -14,6 +14,6 @@ class SubsidiariesController < ApplicationController
     def create
         subsidiary_params = params.require(:subsidiary).permit(:name, :cnpj, :address)
         @subsidiary = Subsidiary.create(subsidiary_params)
-        redirect_to subsidiary_path(id: @subsidiary.id)
+        redirect_to subsidiary_path(@subsidiary)
     end
 end
