@@ -1,5 +1,6 @@
 <% @car_models.each do |model| %>
   <%= link_to model.name, car_model_path(id: model.id)%>
+  <%= link_to "#{model.name} - #{model.year}", model%>
   <p><%= model.year%></p>
   <p><%= model.manufacturer%></p>
   <p><%= model.car_category.name%></p>
