@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin view car model' do 
-  scenario 'and view list' do 
+  scenario 'sucessfully' do 
     car_category = CarCategory.create!(name: 'Top', daily_rate: 200, car_insurance: 50,third_party_insurance:200)
     CarModel.create!(name:'Ka', year:2019, manufacturer:'Ford', motorization:'1.0',
                      car_category: car_category, fuel_type:'Flex')
@@ -42,7 +42,39 @@ feature 'Admin view car model' do
    
   end
 
-  xscenario 'and nothing is registered' do
-   
+  scenario 'and nothing is registered' do
+    visit root_path
+    click_on 'Modelos de carro'
+
+    expect(page).to have_content('Nenhum modelo cadastrada')
+  end
+
+  scenario 'and return to home page' do
+    car_category = CarCategory.create!(name: 'Top', daily_rate: 200, car_insurance: 50,third_party_insurance:200)
+    CarModel.create!(name:'Ka', year:2019, manufacturer:'Ford', motorization:'1.0',
+                     car_category: car_category, fuel_type:'Flex')
+    CarModel.create!(name:'Onix', year:2020, manufacturer:'Chevrolet', motorization:'1.0',
+    car_category: car_category, fuel_type:'Flex')
+
+    visit root_path
+    click_on 'Modelos de carro'
+    click_on 'Voltar'
+
+    expect(current_path).to eq root_path
+  end
+
+  scenario 'and return to car models page' do
+    car_category = CarCategory.create!(name: 'Top', daily_rate: 200, car_insurance: 50,third_party_insurance:200)
+    CarModel.create!(name:'Ka', year:2019, manufacturer:'Ford', motorization:'1.0',
+                     car_category: car_category, fuel_type:'Flex')
+    CarModel.create!(name:'Onix', year:2020, manufacturer:'Chevrolet', motorization:'1.0',
+    car_category: car_category, fuel_type:'Flex')
+
+    visit root_path
+    click_on 'Modelos de carros'
+    click_on 'Ka'
+    click_on 'Voltar'
+
+    expect(current_path).to eq car_models_path
   end
 end
