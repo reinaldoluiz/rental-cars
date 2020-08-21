@@ -30,4 +30,16 @@ feature 'User sign in' do
     expect(page).to have_link  'Sair'
     expect(page).not_to have_link 'Entrar'
   end
+
+  xscenario 'and sign out' do 
+    #Arrange
+    # Cria um user
+
+    #Act
+    #faz login e ... clica no sair
+
+    #Assert
+    #Inverte as expectativas do sign in
+  
+  end
 end

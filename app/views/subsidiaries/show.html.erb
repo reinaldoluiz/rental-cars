@@ -2,4 +2,5 @@
 <span><%= @subsidiary.cnpj%></span>
 <span><%= @subsidiary.address%></span>
 
-<a href="<%= subsidiaries_path %>">Voltar</a>
+<%= link_to 'Voltar', subsidiaries_path %>
+<%= link_to 'Apagar', subsidiary_path(@subsidiary), method: :delete, data:{confirm: 'Deseja realmente deletar?'} %>

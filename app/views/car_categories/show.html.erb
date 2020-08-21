@@ -5,4 +5,4 @@
 
     <%= link_to 'Apagar', car_category_path(@car_category), method: :delete, data:{confirm: 'Deseja realmente deletar?'} %>
     <%= link_to 'Editar', edit_car_category_path %>
-    <a href="<%= car_categories_path %>">Voltar</a>
+    <%= link_to 'Voltar', car_categories_path %>

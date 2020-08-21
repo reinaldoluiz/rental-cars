@@ -8,6 +8,7 @@ feature 'Admin edit Car Model' do
     CarModel.create!(name:'Ka', year:2019, manufacturer:'Ford', motorization:'1.0',
                      car_category: car_category, fuel_type:'Flex')
     
+    user_login()
     visit root_path
     click_on 'Modelos de carro'
     click_on 'Ka - 2019'
@@ -30,6 +31,7 @@ feature 'Admin edit Car Model' do
     CarModel.create!(name:'Golf', year:2005, manufacturer:'Renault', motorization:'1.0',
     car_category: car_category, fuel_type:'Flex')
 
+    
     visit root_path
     click_on 'Filiais'
     click_on 'São Paulo'

@@ -1,4 +1,6 @@
 class SubsidiariesController < ApplicationController
+    before_action :authenticate_user!, only: [:index]
+    
     def index
         @subsidiaries = Subsidiary.all
     end
@@ -15,5 +17,10 @@ class SubsidiariesController < ApplicationController
         subsidiary_params = params.require(:subsidiary).permit(:name, :cnpj, :address)
         @subsidiary = Subsidiary.create(subsidiary_params)
         redirect_to subsidiary_path(@subsidiary)
+    end
+    def destroy
+        @subsidiary = Subsidiary.find(params[:id])
+        @subsidiary.destroy
+        redirect_to subsidiaries_path
     end
 end

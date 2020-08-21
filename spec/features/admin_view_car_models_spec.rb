@@ -1,23 +1,31 @@
 require 'rails_helper'
 
 feature 'Admin view car model' do 
+  scenario 'must be signed in' do 
+    #Arrange
+
+    #Act
+    visit root_path
+    click_on 'Filiais'
+
+    #Assert
+    expect(current_path).to eq new_user_session_path 
+  end
   scenario 'sucessfully' do 
     car_category = CarCategory.create!(name: 'Top', daily_rate: 200, car_insurance: 50,third_party_insurance:200)
     CarModel.create!(name:'Ka', year:2019, manufacturer:'Ford', motorization:'1.0',
                      car_category: car_category, fuel_type:'Flex')
     CarModel.create!(name:'Onix', year:2020, manufacturer:'Chevrolet', motorization:'1.0',
     car_category: car_category, fuel_type:'Flex')
+    user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
+    
+    login_as(user, scope: :user)
 
     visit root_path
     click_on 'Modelos de carro'
 
-    expect(page).to have_content('Ka')
-    expect(page).to have_content('2019')
-    expect(page).to have_content('Ford')
-    expect(page).to have_content('Onix')
-    expect(page).to have_content('2020')
-    expect(page).to have_content('Chevrolet')
-    expect(page).to have_content('Top', count:2)
+    expect(page).to have_content('Ka - 2019')
+    expect(page).to have_content('Onix - 2020')
   end
 
   scenario 'and view details' do
@@ -26,6 +34,9 @@ feature 'Admin view car model' do
                      car_category: car_category, fuel_type:'Flex')
     CarModel.create!(name:'Onix', year:2020, manufacturer:'Chevrolet', motorization:'1.0',
     car_category: car_category, fuel_type:'Flex')
+    user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
+    
+    login_as(user, scope: :user)
 
     visit root_path
     click_on 'Modelos de carro'
@@ -43,10 +54,13 @@ feature 'Admin view car model' do
   end
 
   scenario 'and nothing is registered' do
+    user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
+    
+    login_as(user, scope: :user)
     visit root_path
     click_on 'Modelos de carro'
 
-    expect(page).to have_content('Nenhum modelo cadastrada')
+    expect(page).to have_content('Nenhum modelo cadastrado')
   end
 
   scenario 'and return to home page' do
@@ -55,6 +69,9 @@ feature 'Admin view car model' do
                      car_category: car_category, fuel_type:'Flex')
     CarModel.create!(name:'Onix', year:2020, manufacturer:'Chevrolet', motorization:'1.0',
     car_category: car_category, fuel_type:'Flex')
+    user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
+    
+    login_as(user, scope: :user)
 
     visit root_path
     click_on 'Modelos de carro'
@@ -69,6 +86,9 @@ feature 'Admin view car model' do
                      car_category: car_category, fuel_type:'Flex')
     CarModel.create!(name:'Onix', year:2020, manufacturer:'Chevrolet', motorization:'1.0',
     car_category: car_category, fuel_type:'Flex')
+    user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
+    
+    login_as(user, scope: :user)
 
     visit root_path
     click_on 'Modelos de carros'
