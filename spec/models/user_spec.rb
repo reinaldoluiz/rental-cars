@@ -1,5 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User, type: :model do
+  context 'validation' do
+    it 'attributes cannot be blank' do
+      user = User.new
+
+      user.valid?
+
+      expect(user.errors[:name]).to include('não pode ficar em branco')
+      expect(user.errors[:email]).to include('não pode ficar em branco')
+
+    end
+
+    it 'name must be uniq' do
+      User.create!(name: 'Teste', email:'teste@teste.com', password: '12345646')
+      user = User.new(email: 'teste@teste.com')
+
+      user.valid?
+
+      expect(user.errors[:email]).to include('já está em uso')
+    end
+  end
 end
+  
