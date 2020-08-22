@@ -3,6 +3,14 @@
     <span><%= number_to_currency @car_category.car_insurance%></span>
     <span><%= number_to_currency @car_category.third_party_insurance%></span>
 
+    <h3>Modelos de carro</h3>
+
+    <% @car_category.car_models.each do |car_model|%>
+        <p><%= link_to car_model.name, car_model %></p>
+        <p><%= car_model.year%></p>
+    <%end%>
+
+
     <%= link_to 'Apagar', car_category_path(@car_category), method: :delete, data:{confirm: 'Deseja realmente deletar?'} %>
     <%= link_to 'Editar', edit_car_category_path %>
     <%= link_to 'Voltar', car_categories_path %>
