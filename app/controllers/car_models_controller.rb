@@ -16,10 +16,12 @@ class CarModelsController < ApplicationController
 
   def edit
     @car_model = CarModel.find(params[:id])
+    @car_categories = CarCategory.all
   end
   
   def update
-    @car_modely = CarCategory.find(params[:id])
+    @car_model = CarModel.find(params[:id])
+    @car_categories = CarCategory.all
     if @car_model.update(car_model_params)
       redirect_to @car_model
     else
@@ -32,7 +34,7 @@ class CarModelsController < ApplicationController
     if @car_model.save
       redirect_to @car_model
     else
-      @car_categories = CarCategory.all
+      @car_model = CarModel.all
       render :new
     end
   end

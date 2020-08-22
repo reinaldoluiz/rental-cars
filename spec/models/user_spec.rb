@@ -12,7 +12,7 @@ describe User, type: :model do
 
     end
 
-    it 'name must be uniq' do
+    it 'email must be uniq' do
       User.create!(name: 'Teste', email:'teste@teste.com', password: '12345646')
       user = User.new(email: 'teste@teste.com')
 
