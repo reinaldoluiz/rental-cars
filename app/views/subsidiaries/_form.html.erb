@@ -1,8 +1,8 @@
-<% subsidiary.errors.full_messages.each do |message|%>
+<% @subsidiary.errors.full_messages.each do |message|%>
   <p><%= message%></p>
 <%end%>
 
-<%= form_with model: subsidiary, local: true do |f|%>
+<%= form_with model: @subsidiary, local: true do |f|%>
 
     <%= f.label :name, 'Nome'%>
     <%= f.text_field :name%>

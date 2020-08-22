@@ -13,9 +13,9 @@ feature 'Admin view subsidiaries' do
   end
   scenario 'successfully' do
     #Arrange -> Preparação dos Dados
-    Subsidiary.create!(name: 'Itu', cnpj:'32265659898', address:'Rua dos anjos')
-    Subsidiary.create!(name: 'Para', cnpj:'65659898454', address:'Avenida dos anjos')
-    Subsidiary.create!(name: 'Mogi', cnpj:'22656598982', address:'Praça dos anjos')
+    Subsidiary.create!(name: 'Itu', cnpj:'33.765.516/0001-86', address:'Rua dos anjos')
+    Subsidiary.create!(name: 'Para', cnpj:'11.830.446/0001-60', address:'Avenida dos anjos')
+    Subsidiary.create!(name: 'Mogi', cnpj:'89.679.603/0001-75', address:'Praça dos anjos')
     #Act -> Executar o código
     user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
     
@@ -29,9 +29,9 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and view details' do
-    Subsidiary.create!(name: 'Itu', cnpj:'32265659898', address:'Rua dos anjos')
-    Subsidiary.create!(name: 'Para', cnpj:'65659898454', address:'Avenida dos anjos')
-    Subsidiary.create!(name: 'Mogi', cnpj:'22656598982', address:'Praça dos anjos')
+    Subsidiary.create!(name: 'Itu', cnpj:'33.765.516/0001-86', address:'Rua dos anjos')
+    Subsidiary.create!(name: 'Para', cnpj:'11.830.446/0001-60', address:'Avenida dos anjos')
+    Subsidiary.create!(name: 'Mogi', cnpj:'89.679.603/0001-75', address:'Praça dos anjos')
     user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
     
     login_as(user, scope: :user)
@@ -40,7 +40,7 @@ feature 'Admin view subsidiaries' do
     click_on 'Itu'
     
     expect(page).to have_content('Itu')
-    expect(page).to have_content('32265659898')
+    expect(page).to have_content('33.765.516/0001-86')
     expect(page).to have_content('Rua dos anjos')
     expect(page).not_to have_content('Para')
     expect(page).not_to have_content('Mogi')
@@ -57,7 +57,7 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and return to home page' do
-    Subsidiary.create!(name: 'Itu', cnpj:'32265659898', address:'Rua dos anjos')
+    Subsidiary.create!(name: 'Itu', cnpj:'33.765.516/0001-86', address:'Rua dos anjos')
     user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
     
     login_as(user, scope: :user)
@@ -70,7 +70,7 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and return to manufacturers page' do
-    Subsidiary.create!(name: 'Itu', cnpj:'32265659898', address:'Rua dos anjos')
+    Subsidiary.create!(name: 'Itu', cnpj:'33.765.516/0001-86', address:'Rua dos anjos')
     user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
     
     login_as(user, scope: :user)

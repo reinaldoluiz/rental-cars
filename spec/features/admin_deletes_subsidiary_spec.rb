@@ -11,7 +11,7 @@ feature 'Admin deletes Subsidiary' do
   end
   scenario 'sucessfully' do 
 
-    Subsidiary.create!(name: 'Itu', cnpj:'32265659898', address:'Rua dos anjos')
+    Subsidiary.create!(name: 'Itu', cnpj:'36.526.495/0001-34', address:'Rua dos anjos')
 
     user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
     login_as(user, scope: :user)
@@ -28,8 +28,8 @@ feature 'Admin deletes Subsidiary' do
   end
 
   scenario 'and keep anothers' do
-    Subsidiary.create!(name: 'Itu', cnpj:'32265659898', address:'Rua dos anjos')
-    Subsidiary.create!(name: 'São Paulo', cnpj:'878265659898', address:'Rua do Carmo')
+    Subsidiary.create!(name: 'Itu', cnpj:'36.526.495/0001-34', address:'Rua dos anjos')
+    Subsidiary.create!(name: 'São Paulo', cnpj:'33.765.516/0001-86', address:'Rua do Carmo')
     
     user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
     login_as(user, scope: :user)

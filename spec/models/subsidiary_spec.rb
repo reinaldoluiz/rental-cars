@@ -14,9 +14,9 @@ describe Subsidiary, type: :model do
         .to include('não pode ficar em branco')
     end
 
-    it 'name must be uniq' do
-      Subsidiary.create!(name: 'Itu', cnpj:'32265659898', address:'Rua dos anjos')
-      subsidiary = Subsidiary.new(cnpj: '32265659898')
+    it 'CNPJ must be uniq' do
+      Subsidiary.create!(name: 'Itu', cnpj:'36.526.495/0001-34', address:'Rua dos anjos')
+      subsidiary = Subsidiary.new(cnpj: '36.526.495/0001-34')
 
       subsidiary.valid?
 

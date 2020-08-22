@@ -15,8 +15,12 @@ class SubsidiariesController < ApplicationController
 
   def create
       
-      @subsidiary = Subsidiary.create(subsidiary_params)
-      redirect_to subsidiary_path(@subsidiary)
+    @subsidiary = Subsidiary.new(subsidiary_params)
+    if @subsidiary.save
+      redirect_to @subsidiary, notice:'Filial criado com sucesso'
+    else
+      render :new
+    end 
   end
 
   def edit
