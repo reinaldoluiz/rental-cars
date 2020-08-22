@@ -31,15 +31,17 @@ feature 'User sign in' do
     expect(page).not_to have_link 'Entrar'
   end
 
-  xscenario 'and sign out' do 
+  scenario 'and sign out' do 
     #Arrange
-    # Cria um user
+    user = User.create!(name:'João Almeida', email:'joao@email.com', password:'12345678')
 
     #Act
-    #faz login e ... clica no sair
+    login_as(user, scope: :user)
+    visit root_path
+    click_on 'Sair'
 
     #Assert
-    #Inverte as expectativas do sign in
+    expect(page).to have_content('Entrar')
   
   end
 end
